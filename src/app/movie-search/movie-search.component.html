@@ -1,4 +1,12 @@
-Title: <input type="text" (keyup)="searchMovie($event)">
+<strong>Search Movies</strong>
+<div class="input-group">
+  <input
+    type="text"
+    class="form-control"
+    placeholder="Enter movie title"
+    (keyup)="searchMovie($event)">
+</div>
+
 <br>
 <ul class="list-group">
   <a class="list-group-item"

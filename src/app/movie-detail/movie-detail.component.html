@@ -12,11 +12,15 @@
     </div>
   </div>
   <div class="col-md-12" style="display: flex; flex-direction: row;">
-    <img src="{{movieDetails?.Poster}}" alt="">
+    <img src="{{movieDetails?.Poster}}" *ngIf="movieDetails?.Poster !== 'N/A'">
     <div>
       <div>{{movieDetails?.Plot}}</div>
       <br>
       <div><strong>Director: </strong>{{movieDetails?.Director}}</div>
+      <br>
+      <div><strong>Writer(s): </strong>{{movieDetails?.Writer}}</div>
+      <br>
+      <div><strong>Actors: </strong>{{movieDetails?.Actors}}</div>
     </div>
   </div>
 </div>
