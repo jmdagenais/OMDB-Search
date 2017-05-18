@@ -1,3 +1,14 @@
-<h1>
-  {{title}}
-</h1>
+<div class="container">
+  <!--<nav class="navbar navbar-inverse navbar-fixed-top">-->
+      <!--<div class="navbar-header">-->
+        <!--<a class="navbar-brand" routerLink="/">OMDB Search</a>-->
+      <!--</div>-->
+  <!--</nav>-->
+  <nav class="top-bar">
+    <a class="title" routerLink="">OMDB Search</a>
+  </nav>
+
+  <div class="main-content">
+    <router-outlet></router-outlet>
+  </div>
+</div>

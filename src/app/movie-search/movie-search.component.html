@@ -1,0 +1,7 @@
+Title: <input type="text" (keyup)="searchMovie($event)">
+<br>
+<ul class="list-group">
+  <a class="list-group-item"
+     *ngFor="let movie of movies"
+      routerLink="/movie/{{movie.imdbID}}">{{movie.Title}}</a>
+</ul>

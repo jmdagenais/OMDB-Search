@@ -1,0 +1,17 @@
+.poster-container {
+  display:flex;
+  justify-content:center;
+  align-items:center;
+}
+
+img {
+  margin-right: 20px;
+}
+
+.detail {
+  color: #999;
+}
+
+h2 {
+  margin-top: 0px;
+}

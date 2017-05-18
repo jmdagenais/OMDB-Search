@@ -1,0 +1,22 @@
+<div class="row">
+  <div class="col-md-12">
+    <h2>{{movieDetails?.Title}}</h2>
+    <div class="detail">
+      <span>{{movieDetails?.Rated}}</span>
+      <span> | </span>
+      <span>{{movieDetails?.Runtime}}</span>
+      <span> | </span>
+      <span>{{movieDetails?.Genre}}</span>
+      <span> | </span>
+      <span>{{movieDetails?.Released}}</span>
+    </div>
+  </div>
+  <div class="col-md-12" style="display: flex; flex-direction: row;">
+    <img src="{{movieDetails?.Poster}}" alt="">
+    <div>
+      <div>{{movieDetails?.Plot}}</div>
+      <br>
+      <div><strong>Director: </strong>{{movieDetails?.Director}}</div>
+    </div>
+  </div>
+</div>
