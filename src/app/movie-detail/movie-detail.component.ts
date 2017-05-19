@@ -1,8 +1,8 @@
 import 'rxjs/Rx';
 import {Component, OnInit} from '@angular/core';
-import {Http, Response} from '@angular/http';
 import {ActivatedRoute} from '@angular/router';
 import {MovieDetails} from '../shared/movie.interface';
+import {MovieService} from '../shared/movie.service';
 
 @Component({
   selector: 'app-movie-detail',
@@ -12,16 +12,15 @@ import {MovieDetails} from '../shared/movie.interface';
 export class MovieDetailComponent implements OnInit {
   movieDetails: any = {};
   constructor(
-    private http: Http,
+    private movieService: MovieService,
     private route: ActivatedRoute
   ) { }
 
   ngOnInit() {
     this.route.params.map((p) => p.id)
     .subscribe((id) => {
-      this.http.get(`http://www.omdbapi.com/?i=${id}`)
-        .map((res: Response) => res.json())
-        .subscribe((value) => {
+      this.movieService.getMovie(id)
+        .subscribe((value: MovieDetails) => {
           this.movieDetails = value;
         });
     });

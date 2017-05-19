@@ -1,8 +1,8 @@
 import 'rxjs/Rx';
 import {Component, OnInit, AfterViewInit, ViewChild} from '@angular/core';
-import {Http, Response} from "@angular/http";
 import {debounce} from "rxjs/operator/debounce";
 import {Movie} from '../shared/movie.interface';
+import {MovieService} from '../shared/movie.service';
 
 @Component({
   selector: 'app-movie-search',
@@ -12,7 +12,7 @@ import {Movie} from '../shared/movie.interface';
 export class MovieSearchComponent implements OnInit, AfterViewInit {
   movies: Array<Movie>;
   // @ViewChild
-  constructor(private http: Http) { }
+  constructor(private movieService: MovieService) { }
 
   ngOnInit() {
   }
@@ -27,10 +27,9 @@ export class MovieSearchComponent implements OnInit, AfterViewInit {
       this.movies = [];
       return;
     }
-    this.http.get(`http://www.omdbapi.com/?s=${query}`)
-      .map((res: Response) => res.json())
-      .subscribe((value: any) => {
-        this.movies = value.Search;
+    this.movieService.searchMovies(query)
+      .subscribe((movies: Array<Movie>) => {
+        this.movies = movies;
       });
   }
 }
