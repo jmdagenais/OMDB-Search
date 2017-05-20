@@ -10,7 +10,21 @@ export class MovieService {
   searchMovies(query: string): Observable<Array<Movie>> {
     return this.http.get(`http://www.omdbapi.com/?s=${query}`)
       .map((res: Response) => res.json())
-      .map((value: any) => value.Search);
+      .map((value: any) => {
+          if (value.Response === 'True') {
+            return value.Search;
+          } else {
+           return [];
+          }
+      })
+      .map((movies: Array<Movie>) => {
+        return movies.map((movie) => {
+          if (movie.Poster === 'N/A') {
+            movie.Poster = '../assets/images/noPoster.png';
+          }
+          return movie;
+        });
+      });
   }
 
   getMovie(id: string): Observable<MovieDetails> {

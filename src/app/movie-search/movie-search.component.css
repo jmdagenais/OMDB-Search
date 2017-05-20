@@ -9,3 +9,11 @@ input {
 .input-group {
   display: flex;
 }
+
+.poster-thumbnail {
+  height: 44px;
+}
+
+a {
+  text-decoration: none;
+}

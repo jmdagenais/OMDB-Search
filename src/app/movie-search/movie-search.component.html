@@ -9,7 +9,11 @@
 
 <br>
 <ul class="list-group">
-  <a class="list-group-item"
-     *ngFor="let movie of movies"
-      routerLink="/movie/{{movie.imdbID}}">{{movie.Title}}</a>
+  <li
+    class="list-group-item"
+    *ngFor="let movie of movies">
+    <img src="{{movie.Poster}}" class="poster-thumbnail">
+    <a routerLink="/movie/{{movie.imdbID}}">{{movie.Title}}</a>
+  </li>
+
 </ul>
