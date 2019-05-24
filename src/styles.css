@@ -11,4 +11,25 @@ body {
 
 .main-content {
   background-color: #fff;
+  display: table;
+  width: 100%;
+}
+
+.centered-content {
+  width: 80%;
+  margin: auto;
+  display: table;
+  height: 100vh;
+}
+
+@media (max-width: 600px) {
+  .centered-content {
+    width: 90%;
+  }
+}
+
+@media (max-width: 400px) {
+  .centered-content {
+    width: 100%;
+  }
 }

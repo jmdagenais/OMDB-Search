@@ -15,3 +15,19 @@ img {
 h2 {
   margin-top: 0px;
 }
+
+.movie-description {
+  display: flex;
+  flex-direction: row;
+}
+
+@media (max-width: 600px) {
+  .movie-description {
+    flex-direction: column;
+  }
+
+  .movie-description img {
+    margin-left: auto;
+    margin-right: auto;
+  }
+}

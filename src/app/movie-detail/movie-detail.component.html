@@ -1,6 +1,7 @@
-<div class="row">
-  <div class="col-md-12">
-    <h2>{{movieDetails?.Title}}</h2>
+<h2>{{movieDetails?.Title}}</h2>
+<div>
+  <div>
+    
     <div class="detail">
       <span>{{movieDetails?.Rated}}</span>
       <span> | </span>
@@ -10,8 +11,9 @@
       <span> | </span>
       <span>{{movieDetails?.Released}}</span>
     </div>
+    
   </div>
-  <div class="col-md-12" style="display: flex; flex-direction: row;">
+  <div class="movie-description">
     <img src="{{movieDetails?.Poster}}" *ngIf="movieDetails?.Poster !== 'N/A'">
     <div>
       <div>{{movieDetails?.Plot}}</div>

@@ -5,18 +5,13 @@ import {Http, Response} from '@angular/http';
 
 @Injectable()
 export class MovieService {
-  apiKey: string;
+  private apiKey: string = '';
 
   constructor(private http: Http) {
-    this.getApiKey();
-  }
-
-  private getApiKey() {
-    this.http.get('assets/config.json')
-      .map((res: Response) => res.json())
-      .subscribe((value: any) => {
-        this.apiKey = value.apikey;
-      });
+    this.getApiKey()
+      .subscribe(key => {
+        this.apiKey = key;
+      })
   }
 
   searchMovies(query: string): Observable<Array<Movie>> {
@@ -40,7 +35,29 @@ export class MovieService {
   }
 
   getMovie(id: string): Observable<MovieDetails> {
-    return this.http.get(`http://www.omdbapi.com/?i=${id}&apikey=${this.apiKey}`)
+    return this.initService()
+    .switchMap((x) => {
+      return this.http.get(`http://www.omdbapi.com/?i=${id}&apikey=${this.apiKey}`)
       .map((res: Response) => res.json());
+    })
+  }
+
+  private getApiKey(): Observable<string> {
+    return this.http.get('assets/config.json')
+      .map((res: Response) => res.json())
+      .map((value: any) => {
+        return value.apikey;
+      })
+  }
+
+  private initService(): Observable<string> {
+    if (this.apiKey !== '') {
+      return Observable.of(this.apiKey);
+    } else {
+      return this.getApiKey()
+        .do((key) => {
+          this.apiKey = key;
+        });
+    }
   }
 }
